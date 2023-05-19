@@ -1,13 +1,18 @@
-const mongoose = require('mongoose')
+import { NextFunction, Request, Response } from 'express'
+import mongoose from 'mongoose'
 
 const Recipe = require('../models/recipe')
 
-const getRecipes = async (req, res) => {
+export const getRecipes = async (req: Request, res: Response) => {
 	const recipes = await Recipe.find({})
 	res.status(201).json({ recipes })
 }
 
-const createRecipe = async (req, res, next) => {
+export const createRecipe = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
 	try {
 		const {
 			title,
@@ -55,9 +60,4 @@ const createRecipe = async (req, res, next) => {
 
 		return next(error)
 	}
-}
-
-module.exports = {
-	getRecipes,
-	createRecipe,
 }

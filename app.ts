@@ -1,11 +1,13 @@
-const express = require('express')
-const cors = require('cors')
-const mongoose = require('mongoose')
-require('dotenv').config()
+import express, { Express, Request, Response } from 'express'
+import dotenv from 'dotenv'
+import cors from 'cors'
+import mongoose from 'mongoose'
 
-const recipeRouter = require('./routes/recipe')
+dotenv.config()
 
-const app = express()
+import recipeRouter from './routes/recipe'
+
+const app: Express = express()
 
 app.use(cors())
 
